@@ -185,8 +185,10 @@
                         elevation="3"
                       >
                         <!--<v-subheader>{{tabsitem.title}}</v-subheader>-->
-                        <v-list-item three-line v-for="subitens in tabsitem.itens" :key="subitens.title">
-                          <v-list-item-avatar tile size="80">
+                        <v-list-item three-line v-for="subitens in tabsitem.itens" :key="subitens.title"
+                          style="border-bottom: solid 1px #ddd;"
+                        >
+                          <v-list-item-avatar class="rounded-lg" @click="dialog=true, productpage=subitens, adicionacarrinho(subitens)" tile size="80">
                             <v-img
                               :alt="subitens.titulo"
                               :src="subitens.src"
@@ -1205,161 +1207,13 @@
         tab: null,
         productpage: null,
         tabs: [
-            {
-            title:'Combos',
-            texto:'texto dos Combos',
-            itens:[
-                {
-                id: 0,
-                titulo:'PULSE + BATATA FRITA + REFRI LATA',
-                descricao:'Pão, carne, molho, salada e batata palha',
-                valor: '15.00',
-                valor_total: '15.00',
-                unidade: 1,
-                estoque: 10, 
-                src:'pulse-combo.jpg',
-                msg:''
-                },
-                {
-                id: 1,
-                titulo:'ONIX + BATATA FRITA + REFRI LATA',
-                descricao:'Pão, carne, queijo, presunto, molho, salada e batata palha',
-                valor: '17.00',
-                valor_total: '17.00',
-                unidade: 1,
-                estoque: 10, 
-                src:'onix-combo.jpg',
-                msg:''
-                },
-                {
-                id: 2,
-                titulo:'ARGO + BATATA FRITA + REFRI LATA',
-                descricao:'Pão, carne, ovo, queijo, presunto, molho, salada e batata palha',
-                valor: '18.00',
-                valor_total: '18.00',
-                unidade: 1,
-                estoque: 10,
-                src:'argo-combo.jpg',
-                msg:''
-                },
-                {
-                id: 3,
-                titulo:'COBALT + BATATA FRITA + REFRI LATA',
-                descricao:'Pão, carne, ovo, queijo, presunto, calabresa, molho, salada e batata palha',
-                valor: '19.00',
-                valor_total: '19.00',
-                unidade: 1,
-                estoque: 10, 
-                src:'cobalt-combo.jpg',
-                msg:''
-                },
-                {
-                id: 4,
-                titulo:'JETTA + BATATA FRITA + REFRI LATA',
-                descricao:'Pão, carne, queijo, bacon, molho, salada e batata palha',
-                valor: '18.50',
-                valor_total: '18.50',
-                unidade: 1,
-                estoque: 10, 
-                src:'jetta-combo.jpg',
-                msg:''
-                },
-                {
-                id: 5,
-                titulo:'DUSTER + BATATA FRITA + REFRI LATA',
-                descricao:'Pão, 2 carnes, ovo, queijo, calabresa, cheddar, salada e batata palha',
-                valor: '20.00',
-                valor_total: '20.00',
-                unidade: 1,
-                estoque: 10,
-                src:'duster-combo.jpg',
-                msg:''
-                },
-                {
-                id: 6,
-                titulo:'TRACKER + BATATA FRITA + REFRI LATA',
-                descricao:'Pão, 3 carnes, 3 ovos, queijo, bacon, calabresa, presunto, cheddar, polenguinho, catupiry, salada e batata palha',
-                valor: '28.00',
-                valor_total: '28.00',
-                unidade: 1,
-                estoque: 10, 
-                src:'tracker-combo.jpg',
-                msg:''
-                },
-                {
-                id: 7,
-                titulo:'TIGGO + BATATA FRITA + REFRI LATA',
-                descricao:'Pão, carne de picanha, bacon, cheddar',
-                valor: '20.00',
-                valor_total: '20.00',
-                unidade: 1,
-                estoque: 10, 
-                src:'pulse-combo.jpg',
-                msg:''
-                },
-                {
-                id: 8,
-                titulo:'HB20 + BATATA FRITA + REFRI LATA',
-                descricao:'Pão, 2 carnes de picanha, molho, salada e batata palha',
-                valor: '19.00',
-                valor_total: '19.00',
-                unidade: 1,
-                estoque: 10,
-                src:'duster-combo.jpg',
-                msg:''
-                },
-                {
-                id: 9,
-                titulo:'TORO + BATATA FRITA + REFRI LATA',
-                descricao:'Pão, 2 carnes de picanha, 2 queijos, bacon, molho, salada e batata palha',
-                valor: '22.00',
-                valor_total: '22.00',
-                unidade: 1,
-                estoque: 10, 
-                src:'duster-combo.jpg',
-                msg:''
-                },
-                {
-                id: 10,
-                titulo:'NIVUS + BATATA FRITA + REFRI LATA',
-                descricao:'Pão, carne de picanha, queijo, bacon, ovo, calabresa, molho, salada e batata palha',
-                valor: '20.00',
-                valor_total: '20.00',
-                unidade: 1,
-                estoque: 10, 
-                src:'jetta-combo.jpg',
-                msg:''
-                },
-                {
-                id: 11,
-                titulo:'CRUZE + BATATA FRITA + REFRI LATA',
-                descricao:'Pão, 2 carnes, cheddar, salada e batata palha',
-                valor: '19.00',
-                valor_total: '19.00',
-                unidade: 1,
-                estoque: 10,
-                src:'duster-combo.jpg',
-                msg:''
-                },
-                {
-                id: 12,
-                titulo:'CIVIC + BATATA FRITA + REFRI LATA',
-                descricao:'Pão, 2 carnes de picanha, 2 ovos, polenguinho, bacon, calabresa, presunto, molho, salada e batata palha',
-                valor: '24.00',
-                valor_total: '24.00',
-                unidade: 1,
-                estoque: 10,
-                src:'duster-combo.jpg',
-                msg:''
-                },
-            ]
-            },
+            
             {
             title:'Lanches',
             texto:'texto dos Lanches',
             itens:[
                 {
-                id: 13,
+                id: 0,
                 titulo:'PULSE',
                 descricao:'Pão, carne, molho, salada e batata palha',
                 valor: '5.00',
@@ -1370,7 +1224,7 @@
                 msg:''
                 },
                 {
-                id: 14,
+                id: 1,
                 titulo:'ONIX',
                 descricao:'Pão, carne, queijo, presunto, molho, salada e batata palha',
                 valor: '7.00',
@@ -1381,7 +1235,7 @@
                 msg:''
                 },
                 {
-                id: 15,
+                id: 2,
                 titulo:'ARGO',
                 descricao:'Pão, carne, ovo, queijo, presunto, molho, salada e batata palha',
                 valor: '8.00',
@@ -1392,7 +1246,7 @@
                 msg:''
                 },
                 {
-                id: 16,
+                id: 3,
                 titulo:'COBALT',
                 descricao:'Pão, carne, ovo, queijo, presunto, calabresa, molho, salada e batata palha',
                 valor: '9.00',
@@ -1403,7 +1257,7 @@
                 msg:''
                 },
                 {
-                id: 17,
+                id: 4,
                 titulo:'JETTA',
                 descricao:'Pão, carne, queijo, bacon, molho, salada e batata palha',
                 valor: '8.50',
@@ -1414,7 +1268,7 @@
                 msg:''
                 },
                 {
-                id: 18,
+                id: 5,
                 titulo:'DUSTER',
                 descricao:'Pão, 2 carnes, ovo, queijo, calabresa, cheddar, salada e batata palha',
                 valor: '10.00',
@@ -1425,7 +1279,7 @@
                 msg:''
                 },
                 {
-                id: 19,
+                id: 6,
                 titulo:'TRACKER',
                 descricao:'Pão, 3 carnes, 3 ovos, queijo, bacon, calabresa, presunto, cheddar, polenguinho, catupiry, salada e batata palha',
                 valor: '18.00',
@@ -1436,7 +1290,7 @@
                 msg:''
                 },
                 {
-                id: 20,
+                id: 7,
                 titulo:'TIGGO',
                 descricao:'Pão, carne de picanha, bacon, cheddar',
                 valor: '10.00',
@@ -1447,7 +1301,7 @@
                 msg:''
                 },
                 {
-                id: 21,
+                id: 8,
                 titulo:'HB20',
                 descricao:'Pão, 2 carnes de picanha, molho, salada e batata palha',
                 valor: '9.00',
@@ -1458,7 +1312,7 @@
                 msg:''
                 },
                 {
-                id: 22,
+                id: 9,
                 titulo:'TORO',
                 descricao:'Pão, 2 carnes de picanha, 2 queijos, bacon, molho, salada e batata palha',
                 valor: '12.00',
@@ -1469,7 +1323,7 @@
                 msg:''
                 },
                 {
-                id: 23,
+                id: 10,
                 titulo:'NIVUS',
                 descricao:'Pão, carne de picanha, queijo, bacon, ovo, calabresa, molho, salada e batata palha',
                 valor: '10.00',
@@ -1480,7 +1334,7 @@
                 msg:''
                 },
                 {
-                id: 24,
+                id: 11,
                 titulo:'CRUZE',
                 descricao:'Pão, 2 carnes, cheddar, salada e batata palha',
                 valor: '9.00',
@@ -1491,7 +1345,7 @@
                 msg:''
                 },
                 {
-                id: 25,
+                id: 12,
                 titulo:'CIVIC',
                 descricao:'Pão, 2 carnes de picanha, 2 ovos, polenguinho, bacon, calabresa, presunto, molho, salada e batata palha',
                 valor: '14.00',
@@ -1499,6 +1353,155 @@
                 unidade: 1,
                 estoque: 10,
                 src:'duster.jpg',
+                msg:''
+                },
+            ]
+            },
+            {
+            title:'Combos',
+            texto:'texto dos Combos',
+            itens:[
+                {
+                id: 13,
+                titulo:'PULSE + BATATA FRITA + REFRI LATA',
+                descricao:'Pão, carne, molho, salada e batata palha',
+                valor: '15.00',
+                valor_total: '15.00',
+                unidade: 1,
+                estoque: 10, 
+                src:'pulse-combo.jpg',
+                msg:''
+                },
+                {
+                id: 14,
+                titulo:'ONIX + BATATA FRITA + REFRI LATA',
+                descricao:'Pão, carne, queijo, presunto, molho, salada e batata palha',
+                valor: '17.00',
+                valor_total: '17.00',
+                unidade: 1,
+                estoque: 10, 
+                src:'onix-combo.jpg',
+                msg:''
+                },
+                {
+                id: 15,
+                titulo:'ARGO + BATATA FRITA + REFRI LATA',
+                descricao:'Pão, carne, ovo, queijo, presunto, molho, salada e batata palha',
+                valor: '18.00',
+                valor_total: '18.00',
+                unidade: 1,
+                estoque: 10,
+                src:'argo-combo.jpg',
+                msg:''
+                },
+                {
+                id: 16,
+                titulo:'COBALT + BATATA FRITA + REFRI LATA',
+                descricao:'Pão, carne, ovo, queijo, presunto, calabresa, molho, salada e batata palha',
+                valor: '19.00',
+                valor_total: '19.00',
+                unidade: 1,
+                estoque: 10, 
+                src:'cobalt-combo.jpg',
+                msg:''
+                },
+                {
+                id: 17,
+                titulo:'JETTA + BATATA FRITA + REFRI LATA',
+                descricao:'Pão, carne, queijo, bacon, molho, salada e batata palha',
+                valor: '18.50',
+                valor_total: '18.50',
+                unidade: 1,
+                estoque: 10, 
+                src:'jetta-combo.jpg',
+                msg:''
+                },
+                {
+                id: 18,
+                titulo:'DUSTER + BATATA FRITA + REFRI LATA',
+                descricao:'Pão, 2 carnes, ovo, queijo, calabresa, cheddar, salada e batata palha',
+                valor: '20.00',
+                valor_total: '20.00',
+                unidade: 1,
+                estoque: 10,
+                src:'duster-combo.jpg',
+                msg:''
+                },
+                {
+                id: 19,
+                titulo:'TRACKER + BATATA FRITA + REFRI LATA',
+                descricao:'Pão, 3 carnes, 3 ovos, queijo, bacon, calabresa, presunto, cheddar, polenguinho, catupiry, salada e batata palha',
+                valor: '28.00',
+                valor_total: '28.00',
+                unidade: 1,
+                estoque: 10, 
+                src:'tracker-combo.jpg',
+                msg:''
+                },
+                {
+                id: 20,
+                titulo:'TIGGO + BATATA FRITA + REFRI LATA',
+                descricao:'Pão, carne de picanha, bacon, cheddar',
+                valor: '20.00',
+                valor_total: '20.00',
+                unidade: 1,
+                estoque: 10, 
+                src:'pulse-combo.jpg',
+                msg:''
+                },
+                {
+                id: 21,
+                titulo:'HB20 + BATATA FRITA + REFRI LATA',
+                descricao:'Pão, 2 carnes de picanha, molho, salada e batata palha',
+                valor: '19.00',
+                valor_total: '19.00',
+                unidade: 1,
+                estoque: 10,
+                src:'duster-combo.jpg',
+                msg:''
+                },
+                {
+                id: 22,
+                titulo:'TORO + BATATA FRITA + REFRI LATA',
+                descricao:'Pão, 2 carnes de picanha, 2 queijos, bacon, molho, salada e batata palha',
+                valor: '22.00',
+                valor_total: '22.00',
+                unidade: 1,
+                estoque: 10, 
+                src:'duster-combo.jpg',
+                msg:''
+                },
+                {
+                id: 23,
+                titulo:'NIVUS + BATATA FRITA + REFRI LATA',
+                descricao:'Pão, carne de picanha, queijo, bacon, ovo, calabresa, molho, salada e batata palha',
+                valor: '20.00',
+                valor_total: '20.00',
+                unidade: 1,
+                estoque: 10, 
+                src:'jetta-combo.jpg',
+                msg:''
+                },
+                {
+                id: 24,
+                titulo:'CRUZE + BATATA FRITA + REFRI LATA',
+                descricao:'Pão, 2 carnes, cheddar, salada e batata palha',
+                valor: '19.00',
+                valor_total: '19.00',
+                unidade: 1,
+                estoque: 10,
+                src:'duster-combo.jpg',
+                msg:''
+                },
+                {
+                id: 25,
+                titulo:'CIVIC + BATATA FRITA + REFRI LATA',
+                descricao:'Pão, 2 carnes de picanha, 2 ovos, polenguinho, bacon, calabresa, presunto, molho, salada e batata palha',
+                valor: '24.00',
+                valor_total: '24.00',
+                unidade: 1,
+                estoque: 10,
+                src:'duster-combo.jpg',
                 msg:''
                 },
             ]
@@ -1560,7 +1563,7 @@
                 {
                 id: 30,
                 titulo:'BATATA FRITA',
-                descricao:'Porção de batta frita',
+                descricao:'Porção de batata frita',
                 valor: '15.00',
                 valor_total: '15.00',
                 unidade: 1,
